@@ -1,11 +1,11 @@
 <template>
   <div id="demosite2">
     <div v-for="item in ajaxData">
-        <p>UID:{{ item.UID }}</p>
-        <p>title:{{ item.title }}</p>
-        <p>
-          {{item.descriptionFilterHtml}}
-        </p>
+      <p>UID:{{ item.UID }}</p>
+      <p>title:{{ item.title }}</p>
+      <p>
+        {{ item.descriptionFilterHtml }}
+      </p>
     </div>
   </div>
 </template>
@@ -14,11 +14,9 @@
 // import HelloWorld from '@/components/HelloWorld.vue'
 import { mapState, mapGetters } from 'vuex';
 
-
 export default {
   name: 'Demosite2View',
   components: {
-    // HelloWorld
   },
   computed: {
     ...mapGetters([
@@ -26,12 +24,14 @@ export default {
     ]),
   },
   created() {
-    // 登入
-    this.$store.dispatch("getData",'5b3dd544aaa378d7ca9a2e9a').then((type) => {
-      console.log(type)
-    }).catch((error) => {
-      console.log(error)
-    });;
+    // 取得藝文展覽資料
+    if (this.$store.state.ajaxData.length == 0) {
+      this.$store.dispatch("getData", '5b3dd544aaa378d7ca9a2e9a').then((type) => {
+        console.log(type)
+      }).catch((error) => {
+        console.log(error)
+      });;
+    }
   }
 }
 </script>
