@@ -26,7 +26,7 @@ export default {
   created() {
     // 取得藝文展覽資料
     if (this.$store.state.ajaxData.length == 0) {
-      this.$store.dispatch("getData", '5b3dd544aaa378d7ca9a2e9a').then((type) => {
+      this.$store.dispatch("getData", '61df26a9d083a3542803f5cd').then((type) => {
         console.log(type)
       }).catch((error) => {
         console.log(error)
